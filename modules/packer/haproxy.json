@@ -13,7 +13,7 @@
       "shape": "VM.Standard2.1",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
-      "subnet_ocid": "{{user `pub_subnet`}}",
+      "subnet_ocid": "{{user `bast_subnet`}}",
       "type": "oracle-oci"
     }
   ],
@@ -21,7 +21,7 @@
   "provisioners": [
     {
       "type": "file",
-      "source": "haproxy.cfg",
+      "source": "conf/haproxy.cfg",
       "destination": "/tmp/haproxy.cfg"
     },
     {
@@ -37,6 +37,7 @@
         "sudo systemctl start firewalld",
         "sudo firewall-cmd --permanent --zone=public --add-service=http",
         "sudo firewall-cmd --permanent --zone=public --add-service=https",
+        "sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp",
         "sudo firewall-cmd --reload",
         "sudo systemctl enable haproxy",
         "sudo systemctl start haproxy",

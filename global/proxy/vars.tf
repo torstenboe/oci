@@ -14,7 +14,7 @@ locals {
 }
 
 variable "instance_image_ocid" {
-  default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaapan7a2sai5jesejv27gmwmfx4spmenheov6xkolaryahtivd4a5a"
+  default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa6bznbnoab7dappb4c6fyiqyr5vajgbekr2r6yyjgvppmrd5zeqoq"
 }
 
 variable "availability_domain" {

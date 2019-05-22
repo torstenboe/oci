@@ -1,7 +1,6 @@
 #cloud-config
 runcmd:
 - touch /var/log/diskmount.log
-- touch /var/log/mesosinstall.log
 - echo "Mesos Master Node" >> /etc/motd
 - mkdir /run/opc
 - mv /tmp/nvmemount.sh /run/opc/nvmemount.sh
@@ -11,7 +10,7 @@ runcmd:
 - mkdir /tmp/dcos && cd /tmp/dcos
 - curl -O http://mesosboot.mgtsubnet.mesosnet.oraclevcn.com:80/dcos_install.sh
 - chmod 755 /tmp/dcos/dcos_install.sh
-- bash /tmp/dcos/dcos_install.sh master > /var/log/mesosinstall.log
+- bash /tmp/dcos/dcos_install.sh master > /var/log/mesosinstall.log 2> /var/log/mesosinstall.err
 
 output:
     init:
