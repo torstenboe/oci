@@ -104,6 +104,24 @@ resource "oci_core_security_list" "MesosSL" {
         "max" = 80
       },
     },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 10339        # to allow Kibana acccess for demo
+        "max" = 10339
+      },
+    },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 10500        # to allow Kafka acccess via WebSocket
+        "max" = 10500
+      },
+    },
   ]
 }
 

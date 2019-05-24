@@ -31,7 +31,7 @@ variable "consistent_drive_path" {
 
 # Defines the the nodes to deploy
 variable "NumSlaveInstances" {
-  default = "5"
+  default = "6"
 }
 
 variable "nb_ad" {
