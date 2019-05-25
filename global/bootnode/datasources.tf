@@ -1,6 +1,6 @@
 // Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
 
-data "terraform_remote_state" "mgtsubnet" {
+data "terraform_remote_state" "network" {
   backend = "s3"
   config {
     bucket       = "tfstate_file"
@@ -15,4 +15,10 @@ data "terraform_remote_state" "mgtsubnet" {
     force_path_style            = true
     shared_credentials_file     = "/Users/torsten/.aws/credentials"
   }
+}
+
+data "oci_core_images" "MesosBootNode" {
+  compartment_id = "${var.compartment_ocid}"
+  display_name = "${var.display_name}"
+  sort_by = "TIMECREATED"
 }

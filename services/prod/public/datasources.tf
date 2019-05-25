@@ -20,3 +20,9 @@ data "terraform_remote_state" "pubsubnet" {
     shared_credentials_file     = "/Users/torsten/.aws/credentials"
   }
 }
+
+data "oci_core_images" "MesosSlave" {
+  compartment_id = "${var.compartment_ocid}"
+  display_name = "${var.display_name}"
+  sort_by = "TIMECREATED"
+}

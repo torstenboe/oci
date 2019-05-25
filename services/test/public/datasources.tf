@@ -4,7 +4,7 @@ data "oci_identity_availability_domains" "ADs" {
   compartment_id = "${var.tenancy_ocid}"
 }
 
-data "terraform_remote_state" "mstsubnet" {
+data "terraform_remote_state" "pubsubnet" {
   backend = "s3"
   config {
     bucket       = "tfstate_file"
@@ -19,10 +19,4 @@ data "terraform_remote_state" "mstsubnet" {
     force_path_style            = true
     shared_credentials_file     = "/Users/torsten/.aws/credentials"
   }
-}
-
-data "oci_core_images" "MesosMstNode" {
-  compartment_id = "${var.compartment_ocid}"
-  display_name = "${var.display_name}"
-  sort_by = "TIMECREATED"
 }

@@ -1,14 +1,7 @@
-// Copyright (c) 2017, 2019, Oracle and/or its affiliates. All rights reserved.
-
-data "oci_identity_availability_domains" "ADs" {
-  compartment_id = "${var.tenancy_ocid}"
-}
-
-data "terraform_remote_state" "mstsubnet" {
-  backend = "s3"
-  config {
+terraform {
+  backend "s3" {
     bucket       = "tfstate_file"
-    key      = "network/terraform.tfstate"
+    key      = "prod/slave/terraform.tfstate"
     region   = "eu-frankfurt-1"
     endpoint = "https://oscemea005.compat.objectstorage.eu-frankfurt-1.oraclecloud.com"
     skip_region_validation      = true
@@ -19,10 +12,4 @@ data "terraform_remote_state" "mstsubnet" {
     force_path_style            = true
     shared_credentials_file     = "/Users/torsten/.aws/credentials"
   }
-}
-
-data "oci_core_images" "MesosMstNode" {
-  compartment_id = "${var.compartment_ocid}"
-  display_name = "${var.display_name}"
-  sort_by = "TIMECREATED"
 }

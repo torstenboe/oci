@@ -13,8 +13,8 @@ locals {
   ssh_private_key = "${file("${var.ssh_private_key}")}"
 }
 
-variable "display_name" {
-  default = "MesosSlave"
+variable "instance_image_ocid" {
+  default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaal2lr27q7ptsw7jub5vxkgrtbrhjo7vqvpst43qdbjnxchcg55ncq"
 }
 
 variable "availability_domain" {
@@ -30,8 +30,8 @@ variable "consistent_drive_path" {
 }
 
 # Defines the the nodes to deploy
-variable "NumPublicInstances" {
-  default = "3"
+variable "NumSlaveInstances" {
+  default = "6"
 }
 
 variable "nb_ad" {

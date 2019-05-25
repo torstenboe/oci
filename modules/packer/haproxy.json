@@ -14,7 +14,13 @@
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
       "subnet_ocid": "{{user `bast_subnet`}}",
-      "type": "oracle-oci"
+      "type": "oracle-oci",
+      "tags": [{
+        "structure": "module",
+        "function": "proxy",
+        "name": "HAProxy"
+        }
+      ]
     }
   ],
 

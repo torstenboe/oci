@@ -13,8 +13,8 @@ locals {
   ssh_private_key = "${file("${var.ssh_private_key}")}"
 }
 
-variable "instance_image_ocid" {
-  default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa5o2632n3nykduszon2ovdswn734huv7yhidvovnxol3447shtdgq"
+variable "display_name" {
+  default = "MesosMstNode"
 }
 
 variable "availability_domain" {

@@ -15,13 +15,13 @@ resource "oci_core_instance" "BastionInstance" {
   }
 
   source_details {
+    source_id = "${data.oci_core_images.BastionImage.images.0.id}"
     source_type = "image"
-    source_id   = "${var.instance_image_ocid}"
   }
 
   metadata {
     ssh_authorized_keys = "${local.ssh_public_key}"
-    user_data           = "${base64encode(file(var.BootStrapFile))}"
+    user_data = "${base64encode(file("./bootscript.tpl"))}"
   }
 
 }

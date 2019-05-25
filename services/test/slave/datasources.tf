@@ -4,10 +4,10 @@ data "oci_identity_availability_domains" "ADs" {
   compartment_id = "${var.tenancy_ocid}"
 }
 
-data "terraform_remote_state" "mstsubnet" {
+data "terraform_remote_state" "prvsubnet" {
   backend = "s3"
   config {
-    bucket       = "tfstate_file"
+    bucket   = "tfstate_file"
     key      = "network/terraform.tfstate"
     region   = "eu-frankfurt-1"
     endpoint = "https://oscemea005.compat.objectstorage.eu-frankfurt-1.oraclecloud.com"
@@ -19,10 +19,4 @@ data "terraform_remote_state" "mstsubnet" {
     force_path_style            = true
     shared_credentials_file     = "/Users/torsten/.aws/credentials"
   }
-}
-
-data "oci_core_images" "MesosMstNode" {
-  compartment_id = "${var.compartment_ocid}"
-  display_name = "${var.display_name}"
-  sort_by = "TIMECREATED"
 }

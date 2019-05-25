@@ -13,13 +13,13 @@ resource "oci_core_instance" "MesosPubInstance" {
   create_vnic_details {
     subnet_id        = "${data.terraform_remote_state.pubsubnet.PubSubnet}"
     display_name     = "primaryvnic"
-    assign_public_ip = true 
+    assign_public_ip = true
     hostname_label   = "mesospub${count.index}"
   }
 
   source_details {
+    source_id = "${data.oci_core_images.MesosSlave.images.0.id}"
     source_type = "image"
-    source_id   = "${var.instance_image_ocid}"
   }
 
   metadata {
