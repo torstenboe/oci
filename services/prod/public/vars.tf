@@ -3,6 +3,8 @@ variable "user_ocid" {}
 variable "fingerprint" {}
 variable "private_key_path" {}
 variable "region" {}
+variable "availability_domain" {}
+
 
 variable "compartment_ocid" {}
 variable "ssh_public_key" {}
@@ -15,10 +17,6 @@ locals {
 
 variable "display_name" {
   default = "MesosSlave"
-}
-
-variable "availability_domain" {
-  default = "sDei:EU-FRANKFURT-1-AD-1"
 }
 
 variable "DiskSize" {
