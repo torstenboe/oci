@@ -14,7 +14,13 @@
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
       "subnet_ocid": "{{user `bast_subnet`}}",
-      "type": "oracle-oci"
+      "type": "oracle-oci",
+      "tags": [{
+        "structure": "module",
+        "function": "bastion",
+        "name": "MesosBastion"
+        }
+      ]
     }
   ],
 
@@ -40,6 +46,14 @@
         "sudo firewall-cmd --reload",
         "sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config"
       ]
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "BastionImage.json",
+      "strip_path": true
     }
   ]
 }

@@ -21,7 +21,7 @@ data "terraform_remote_state" "mstsubnet" {
   }
 }
 
-data "oci_core_images" "MesosMstNode" {
+data "oci_core_images" "MesosMaster" {
   compartment_id = "${var.compartment_ocid}"
   display_name = "${var.display_name}"
   sort_by = "TIMECREATED"

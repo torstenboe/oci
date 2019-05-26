@@ -17,7 +17,7 @@ resource "oci_core_instance" "MesosMstInstance" {
   }
 
   source_details {
-    source_id = "${data.oci_core_images.MesosMstNode.images.0.id}"
+    source_id = "${data.oci_core_images.MesosMaster.images.0.id}"
     source_type = "image"
   }
 

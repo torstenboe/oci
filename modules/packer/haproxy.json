@@ -50,5 +50,13 @@
         "sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config"
       ]
     }
+  ],
+
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "HAProxyImage.json",
+      "strip_path": true
+    }
   ]
 }

@@ -16,7 +16,7 @@ locals {
 }
 
 variable "display_name" {
-  default = "MesosMstNode"
+  default = "MesosMaster"
 }
 
 variable "nb_ad" {
