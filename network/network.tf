@@ -168,7 +168,7 @@ resource "oci_core_subnet" "MgtSubnet" {
 
 resource "oci_core_subnet" "MstSubnet" {
   availability_domain = ""
-  cidr_block          = "10.1.20.0/24"
+  cidr_block          = "10.1.20.0/29"
   display_name        = "MstSubnet"
   dns_label           = "MstSubnet"
 #  security_list_ids   = ["${oci_core_virtual_network.MesosNet.default_security_list_id}"]
