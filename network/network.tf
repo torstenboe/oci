@@ -122,6 +122,42 @@ resource "oci_core_security_list" "MesosSL" {
         "max" = 10500
       },
     },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 6443        # to allow Kubernetes acccess via WebSocket
+        "max" = 6443
+      },
+    },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 2379        # to allow Kubernetes acccess via WebSocket
+        "max" = 2380
+      },
+    },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 10250        # to allow Kubernetes acccess via WebSocket
+        "max" = 10252
+      },
+    },
+    {
+      protocol = "6"                     # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 30000        # to allow Kubernetes acccess via WebSocket
+        "max" = 32767
+      },
+    },
   ]
 }
 
