@@ -70,7 +70,7 @@
   "post-processors": [
     {
       "type": "manifest",
-      "output": "MesosBootImage.json",
+      "output": "manifest/MesosBootImage.json",
       "strip_path": true
     }
   ]
