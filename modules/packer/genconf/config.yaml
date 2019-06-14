@@ -1,4 +1,4 @@
-bootstrap_url: http://10.1.50.128:80
+bootstrap_url: http://10.1.50.131:80
 cluster_name: bamf
 superuser_username: opc
 superuser_password_hash: <su hash>

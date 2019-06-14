@@ -6,12 +6,12 @@ variable "region" {}
 variable "availability_domain" {}
 
 variable "compartment_ocid" {}
-variable "ssh_public_key" {}
-variable "ssh_private_key" {}
+variable "ssh_public_key_path" {}
+variable "ssh_private_key_path" {}
 
 locals {
-  ssh_public_key = "${file("${var.ssh_public_key}")}"
-  ssh_private_key = "${file("${var.ssh_private_key}")}"
+  ssh_public_key = "${file("${var.ssh_public_key_path}")}"
+  ssh_private_key = "${file("${var.ssh_private_key_path}")}"
 }
 
 variable "display_name" {

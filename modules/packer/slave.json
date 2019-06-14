@@ -13,7 +13,7 @@
       "shape": "VM.Standard2.4",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
-      "subnet_ocid": "{{user `mgt_subnet`}}",
+      "subnet_ocid": "{{user `bast_subnet`}}",
       "type": "oracle-oci",
       "tags": [{
         "structure": "module",
@@ -48,7 +48,7 @@
   "post-processors": [
     {
       "type": "manifest",
-      "output": "MesosSlaveImage.json",
+      "output": "manifest/MesosSlaveImage.json",
       "strip_path": true
     }
   ]
