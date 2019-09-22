@@ -96,7 +96,25 @@ resource "oci_core_security_list" "MesosSL" {
       source   = "${var.vcn_cidr}"
     },
     {
-      protocol = "6"                     # tcp
+      protocol = "6"      # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 53        # dcos-net.service
+        "max" = 53
+      },
+    },
+    {
+      protocol = "17"     # udp
+      source   = "${var.authorized_ips}"
+
+      udp_options {
+        "min" = 53        # dcos-net.service
+        "max" = 53
+      },
+    },
+    {
+      protocol = "6"      # tcp
       source   = "${var.authorized_ips}"
 
       tcp_options {
@@ -105,34 +123,16 @@ resource "oci_core_security_list" "MesosSL" {
       },
     },
     {
-      protocol = "6"                     # tcp
+      protocol = "6"      # tcp
       source   = "${var.authorized_ips}"
 
       tcp_options {
-        "min" = 10339        # to allow Kibana acccess for demo
-        "max" = 10339
+        "min" = 443        # to allow HTTPS acccess to Mesos Admin
+        "max" = 443
       },
     },
     {
-      protocol = "6"                     # tcp
-      source   = "${var.authorized_ips}"
-
-      tcp_options {
-        "min" = 10500        # to allow Kafka acccess via WebSocket
-        "max" = 10500
-      },
-    },
-    {
-      protocol = "6"                     # tcp
-      source   = "${var.authorized_ips}"
-
-      tcp_options {
-        "min" = 6443        # to allow Kubernetes acccess via WebSocket
-        "max" = 6443
-      },
-    },
-    {
-      protocol = "6"                     # tcp
+      protocol = "6"       # tcp
       source   = "${var.authorized_ips}"
 
       tcp_options {
@@ -141,7 +141,25 @@ resource "oci_core_security_list" "MesosSL" {
       },
     },
     {
-      protocol = "6"                     # tcp
+      protocol = "6"        # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 6443        # to allow Kubernetes acccess via WebSocket
+        "max" = 6443
+      },
+    },
+    {
+      protocol = "6"      # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 8080       # to allow HTTP acccess to Zookeeper Admin
+        "max" = 8080
+      },
+    },
+    {
+      protocol = "6"      # tcp
       source   = "${var.authorized_ips}"
 
       tcp_options {
@@ -150,7 +168,25 @@ resource "oci_core_security_list" "MesosSL" {
       },
     },
     {
-      protocol = "6"                     # tcp
+      protocol = "6"       # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 10339      # to allow Kibana acccess for demo
+        "max" = 10339
+      },
+    },
+    {
+      protocol = "6"       # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 10500      # to allow Kafka acccess via WebSocket
+        "max" = 10500
+      },
+    },
+    {
+      protocol = "6"         # tcp
       source   = "${var.authorized_ips}"
 
       tcp_options {
@@ -158,6 +194,51 @@ resource "oci_core_security_list" "MesosSL" {
         "max" = 32767
       },
     },
+    {
+      protocol = "6"         # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 61003        # dcos-rexray.service
+        "max" = 61003
+      },
+    },
+    {
+      protocol = "6"         # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 61091        # dcos-metrics-agent.service/dcos-metrics-master.service
+        "max" = 61091
+      },
+    },
+    {
+      protocol = "6"         # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 61420        # dcos-net.service
+        "max" = 61420
+      },
+    },
+    {
+      protocol = "6"         # tcp
+      source   = "${var.authorized_ips}"
+
+      tcp_options {
+        "min" = 62080        # dcos-net.service
+        "max" = 62080
+      },
+    },
+    {
+      protocol = "17"        # udp
+      source   = "${var.authorized_ips}"
+
+      udp_options {
+        "min" = 64000        # dcos-net.service
+        "max" = 64000
+      },
+    }
   ]
 }
 
