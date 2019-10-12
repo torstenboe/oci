@@ -1,8 +1,12 @@
 .DS_Store
 ENV-VARS
-backend.tf
 .terraform
 terraform.tfvars
 terraform.tfstate
 terraform.tfstate.backup
-
+vars.json
+*.pem
+*.cfg
+license.txt
+dcos_generate_config.ee.sh
+dcos_generate_config.sh

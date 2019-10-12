@@ -1,0 +1,57 @@
+{
+  "builders":[
+    {
+      "base_image_ocid": "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2n5z4nmkqjf27btkbdibflwvximz5i3rsz57c3gowckozrdshnua",
+      "tenancy_ocid": "{{user `tenancy_ocid`}}",
+      "compartment_ocid": "{{user `compartment_ocid`}}",
+      "availability_domain": "{{user `availability_domain`}}",
+      "region": "eu-frankfurt-1",
+      "user_ocid": "{{user `user_ocid`}}",
+      "fingerprint": "{{user `fingerprint`}}",
+      "key_file": "{{user `key_file`}}",
+      "image_name": "MesosMaster",
+      "shape": "VM.DenseIO1.4",
+      "ssh_username": "{{user `ssh_username`}}",
+      "ssh_password": "{{user `ssh_password`}}",
+      "subnet_ocid": "{{user `bast_subnet`}}",
+      "type": "oracle-oci",
+      "tags": [{
+        "structure": "module",
+        "function": "master",
+        "name": "MesosMaster"
+        }
+      ]
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "./scripts/nvmemount.sh",
+      "destination": "/tmp/nvmemount.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo yum update -y",
+        "sudo yum install -y wget unzip tar xz curl ipset docker-engine ntp",
+        "sudo groupadd nogroup",
+        "sudo systemctl enable docker && sudo systemctl start docker",
+        "sudo yum install -y python-oci-cli",
+        "sudo yum update oci-utils",
+        "sudo systemctl enable ocid.service && sudo systemctl start ocid.service",
+        "sudo systemctl stop firewalld && sudo systemctl disable firewalld",
+        "sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/g' /etc/selinux/config"
+      ]
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "manifest",
+      "output": "manifest/MesosMasterImage.json",
+      "strip_path": true
+    }
+  ]
+}

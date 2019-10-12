@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "name": "oracle-oci",
+      "builder_type": "oracle-oci",
+      "build_time": 1560548038,
+      "files": null,
+      "artifact_id": "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaaorclsevzjbqktmrgwrtkam4sl6yplcnjnau3ybwkm7rgrtiaycdq",
+      "packer_run_uuid": "4cb01042-ff31-8dc5-8444-9f3d47fe6f95",
+      "custom_data": null
+    }
+  ],
+  "last_run_uuid": "4cb01042-ff31-8dc5-8444-9f3d47fe6f95"
+}
